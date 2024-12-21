@@ -1,20 +1,34 @@
-# Sistema de Gestão de Unidades de Saúde
+# Integração e Deploy com Coolify
 
-Este é um sistema de gestão de unidades de saúde desenvolvido em Laravel, com um painel administrativo integrado usando **Filament 3**.
-
-## Funcionalidades
-
--   **Seleção de Unidades**: Página inicial onde é possível selecionar uma unidade de saúde para visualizar seus dados.
--   **Visualização de Informações**: Cada unidade tem informações específicas exibidas, incluindo Ramais e Documentos.
--   **Painel Administrativo**: Painel de administração gerado pelo Filament, acessível via a rota `/admin`, onde administradores podem gerenciar as unidades.
--   **Controle de Acesso**: Apenas usuários com privilégios de administrador podem acessar a área `/admin`.
+Este projeto está configurado para deploy no Coolify, uma plataforma que facilita a entrega e o gerenciamento de aplicações. Certifique-se de configurar as variáveis de ambiente corretamente no Coolify antes de realizar o deploy.
 
 ## Tecnologias Usadas
 
--   **Laravel 10**: Framework PHP utilizado para a estrutura backend do sistema.
+-   **Laravel 11**: Framework PHP utilizado para a estrutura backend do sistema.
 -   **Filament 3**: Pacote para geração de painéis administrativos rápidos e eficientes.
 -   **PostgreSQL**: Banco de dados utilizado para armazenar as informações das unidades de saúde.
--   **Bootstrap**: Utilizado para estilização básica das páginas.
+
+## Plugins Instalado
+- **[`bezhansalleh/filament-shield`](https://github.com/bezhanSalleh/filament-shield)**
+  - Gerenciamento de permissões e autenticação com controle baseado em funções (RBAC).
+  
+- **[`joaopaulolndev/filament-edit-profile`](https://github.com/joaopaulolndev/filament-edit-profile)**
+  - Funcionalidade para edição de perfil de usuário no painel administrativo.
+
+- **[`leandrocfe/filament-apex-charts`](https://github.com/LeandroCFE/filament-apex-charts)**
+  - Integração de gráficos Apex Charts no painel do Filament para visualizações de dados.
+
+- **[`leandrocfe/filament-ptbr-form-fields`](https://github.com/LeandroCFE/filament-ptbr-form-fields)**
+  - Tradução e personalização de campos de formulário para português brasileiro.
+
+- **[`pxlrbt/filament-excel`](https://github.com/pxlrbt/filament-excel)**
+  - Exportação e importação de dados em arquivos Excel no painel administrativo.
+
+- **[`joshembling/image-optimizer`](https://github.com/Joshembling/image-optimizer)**
+  - Otimização de imagens enviadas ao sistema.
+
+- **[`rmsramos/activitylog`](https://github.com/spatie/laravel-activitylog)**
+  - Registro de logs de atividades do usuário.
 
 ## Requisitos
 
@@ -28,7 +42,7 @@ Este é um sistema de gestão de unidades de saúde desenvolvido em Laravel, com
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/Samuraiflamesf/SAFTEC_CMS.git
+    git clone https://github.com/Samuraiflamesf/Laravel-Filament_3-Coolify.git
     ```
 
 2. Entre no diretório do projeto:
@@ -132,5 +146,3 @@ Se você precisar alterar a rota do painel administrativo, edite o arquivo `conf
 ## Licença
 
 Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para mais informações.
-# SAFTEC
-# SAFTEC
