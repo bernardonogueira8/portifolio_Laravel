@@ -8,6 +8,7 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -28,10 +29,17 @@ class CardResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('nome')->required()->maxLength(255),
-                Textarea::make('descricao')->required(),
+                TextInput::make('nome')->required()->maxLength(35),
+                Textarea::make('descricao')->required()->maxLength(150),
                 FileUpload::make('imagem')->image()->directory('cards')->required(),
                 TextInput::make('link')->url()->required(),
+                Select::make('tipo')
+                    ->options([
+                        'dashboard' => 'Dashboard',
+                        'ferramenta' => 'Ferramenta',
+                    ])
+                    ->required()
+                    ->default('dashboard'),
             ]);
     }
 
@@ -43,6 +51,7 @@ class CardResource extends Resource
                 TextColumn::make('nome')->searchable(),
                 TextColumn::make('descricao')->limit(50),
                 TextColumn::make('link'),
+                TextColumn::make('tipo'),
             ])
             ->filters([
                 //

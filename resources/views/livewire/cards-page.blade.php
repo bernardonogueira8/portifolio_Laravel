@@ -1,0 +1,90 @@
+<div class="container flex flex-col min-h-screen p-6 mx-auto">
+    <!-- Filtro de Seleção -->
+    <div class="flex justify-center gap-4 mb-6">
+        <button wire:click="$set('filtro', 'tudo')" class="px-4 py-2 font-semibold text-white transition rounded-lg"
+            :class="{ 'bg-blue-600': @js($filtro) === 'tudo', 'bg-gray-500': @js($filtro) !== 'tudo' }">
+            Tudo
+        </button>
+
+        <button wire:click="$set('filtro', 'dashboard')" class="px-4 py-2 font-semibold text-white transition rounded-lg"
+            :class="{ 'bg-blue-600': @js($filtro) === 'dashboard', 'bg-gray-500': @js($filtro) !== 'dashboard' }">
+            Dashboards
+        </button>
+
+        <button wire:click="$set('filtro', 'ferramenta')"
+            class="px-4 py-2 font-semibold text-white transition rounded-lg"
+            :class="{ 'bg-blue-600': @js($filtro) === 'ferramenta', 'bg-gray-500': @js($filtro) !== 'ferramenta' }">
+            Ferramentas
+        </button>
+    </div>
+
+    <!-- Placeholder Skeleton enquanto carrega -->
+    <div wire:loading class="w-full">
+        <div
+            class="grid w-full grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
+            @for ($i = 0; $i < 10; $i++)
+                <div
+                    class="animate-pulse overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 shadow-lg transition-transform transform hover:scale-105
+                    w-[240px] h-[270px] flex flex-col relative">
+                    <div class="w-full h-32 bg-gray-400 dark:bg-gray-600"></div>
+                    <div class="flex flex-col flex-grow p-4">
+                        <div class="w-3/4 h-4 mb-2 bg-gray-400 dark:bg-gray-600"></div>
+                        <div class="w-5/6 h-3 mb-2 bg-gray-400 dark:bg-gray-600"></div>
+                        <div class="w-4/6 h-3 bg-gray-400 dark:bg-gray-600"></div>
+                    </div>
+                </div>
+            @endfor
+        </div>
+    </div>
+
+    <!-- Listagem dos Cards -->
+    <div wire:loading.remove class="w-full">
+        @if ($cards->isEmpty())
+            <!-- Mensagem quando não há registros -->
+            <div class="flex justify-center items-center min-h-[260px] w-full">
+                <h1 class="text-xl font-semibold text-center text-gray-900 dark:text-white">
+                    Nenhum dashboard disponível.
+                </h1>
+            </div>
+        @else
+            <div
+                class="grid w-full grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
+                @foreach ($cards as $card)
+                    <a href="{{ $card->link }}" target="_blank"
+                        class="block overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 shadow-lg transition-transform transform hover:scale-105
+                        w-[240px] h-[270px] flex flex-col relative">
+
+                        <!-- Badge indicando o tipo (Dashboard / Ferramenta) -->
+                        <span
+                            class="absolute px-3 py-1 text-xs font-semibold text-white uppercase rounded-full top-2 right-2"
+                            :class="{
+                                'bg-blue-600': '{{ $card->tipo }}'
+                                === 'dashboard',
+                                'bg-green-500': '{{ $card->tipo }}'
+                                === 'ferramenta'
+                            }">
+                            {{ ucfirst($card->tipo) }}
+                        </span>
+
+                        <img src="{{ asset('storage/' . $card->imagem) }}" alt="{{ $card->nome }}"
+                            class="object-cover w-full h-32">
+
+                        <div class="flex flex-col flex-grow p-4">
+                            <h2 class="text-base font-semibold tracking-tight text-gray-900 dark:text-white">
+                                {{ $card->nome }}
+                            </h2>
+                            <p class="flex-grow mt-2 text-sm text-gray-600 dark:text-gray-400">
+                                {{ $card->descricao }}
+                            </p>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+
+            <!-- Paginação -->
+            <div class="flex justify-center mt-6">
+                {{ $cards->links() }}
+            </div>
+        @endif
+    </div>
+</div>
