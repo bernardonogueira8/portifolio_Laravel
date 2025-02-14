@@ -10,7 +10,6 @@
 </head>
 
 <body class="bg-white dark:bg-gray-900">
-
     {{ $slot }}
     @livewireScripts
 </body>
