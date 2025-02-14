@@ -10,10 +10,6 @@
 </head>
 
 <body class="bg-white dark:bg-gray-900">
-    <p class="pb-2 mx-4 mt-4 text-lg font-semibold text-white border-b border-gray-500">
-        Explore alguns projetos que já desenvolvi:
-    </p>
-
     {{ $slot }}
     @livewireScripts
 </body>

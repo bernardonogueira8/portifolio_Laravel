@@ -1,21 +1,35 @@
-<div class="container flex flex-col min-h-screen p-6 mx-auto">
-    <!-- Filtro de Seleção -->
-    <div class="flex justify-center gap-4 mb-6">
-        <button wire:click="$set('filtro', 'tudo')" class="px-4 py-2 font-semibold text-white transition rounded-lg"
+<div class="flex flex-col min-h-screen p-6 pb-2 mx-auto ">
+    <div class="h-1 overflow-hidden bg-gray-800 rounded">
+        <div class="w-24 h-full bg-indigo-500"
             :class="{ 'bg-blue-600': @js($filtro) === 'tudo', 'bg-gray-500': @js($filtro) !== 'tudo' }">
-            Tudo
-        </button>
+        </div>
+    </div>
+    <div class="flex flex-col flex-wrap py-6 pb-0 mb-0 sm:flex-row">
+        <h1 class="mb-2 text-2xl font-medium text-white md:w-3/5 sm:w-2/5 title-font sm:mb-0">
+            Explore alguns projetos que já desenvolvi:
+        </h1>
+        <div class="pl-0 text-base leading-relaxed md:w-2/5 sm:w-2/5 sm:pl-10 sm:justify-center">
+            <!-- Filtro de Seleção -->
+            <div class="flex justify-center gap-4 mb-6 sm:justify-end">
+                <button wire:click="$set('filtro', 'tudo')"
+                    class="px-4 py-2 font-semibold text-white transition rounded-lg"
+                    :class="{ 'bg-blue-600': @js($filtro) === 'tudo', 'bg-gray-500': @js($filtro) !== 'tudo' }">
+                    Tudo
+                </button>
 
-        <button wire:click="$set('filtro', 'dashboard')" class="px-4 py-2 font-semibold text-white transition rounded-lg"
-            :class="{ 'bg-blue-600': @js($filtro) === 'dashboard', 'bg-gray-500': @js($filtro) !== 'dashboard' }">
-            Dashboards
-        </button>
+                <button wire:click="$set('filtro', 'dashboard')"
+                    class="px-4 py-2 font-semibold text-white transition rounded-lg"
+                    :class="{ 'bg-blue-600': @js($filtro) === 'dashboard', 'bg-gray-500': @js($filtro) !== 'dashboard' }">
+                    Dashboards
+                </button>
 
-        <button wire:click="$set('filtro', 'ferramenta')"
-            class="px-4 py-2 font-semibold text-white transition rounded-lg"
-            :class="{ 'bg-blue-600': @js($filtro) === 'ferramenta', 'bg-gray-500': @js($filtro) !== 'ferramenta' }">
-            Ferramentas
-        </button>
+                <button wire:click="$set('filtro', 'ferramenta')"
+                    class="px-4 py-2 font-semibold text-white transition rounded-lg"
+                    :class="{ 'bg-blue-600': @js($filtro) === 'ferramenta', 'bg-gray-500': @js($filtro) !== 'ferramenta' }">
+                    Ferramentas
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- Placeholder Skeleton enquanto carrega -->
@@ -48,7 +62,7 @@
             </div>
         @else
             <div
-                class="grid w-full grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
+                class="grid w-full grid-cols-1 gap-6 p-6 pt-3 pb-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5">
                 @foreach ($cards as $card)
                     <a href="{{ $card->link }}" target="_blank"
                         class="block overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 shadow-lg transition-transform transform hover:scale-105
@@ -87,4 +101,5 @@
             </div>
         @endif
     </div>
+
 </div>
