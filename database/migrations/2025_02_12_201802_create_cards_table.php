@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome');
             $table->text('descricao');
             $table->string('imagem');
-            $table->string('link');
+            $table->text('link');
             $table->timestamps();
         });
     }
