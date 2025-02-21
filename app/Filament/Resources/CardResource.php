@@ -12,6 +12,7 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
@@ -25,7 +26,7 @@ class CardResource extends Resource
 {
     protected static ?string $model = Card::class;
 
-    protected static ?string $modelLabel = 'Dashboard';
+    protected static ?string $modelLabel = 'Card';
 
     public static function getNavigationBadge(): ?string
     {
@@ -40,7 +41,7 @@ class CardResource extends Resource
     }
     public static function getNavigationLabel(): string
     {
-        return 'Card';
+        return 'Lista de Cards';
     }
     public static function getNavigationGroup(): ?string
     {
@@ -101,12 +102,33 @@ class CardResource extends Resource
     {
         return $table
             ->columns([
-                ImageColumn::make('imagem'),
-                TextColumn::make('nome')->searchable(),
-                TextColumn::make('descricao')->limit(50),
-                TextColumn::make('link'),
-                TextColumn::make('tipo'),
+                ImageColumn::make('imagem')
+                    ->circular() // Deixa a imagem arredondada
+                    ->size(50), // Define um tamanho fixo para manter a consistência
+
+                TextColumn::make('nome')
+                    ->searchable()
+                    ->sortable(),
+
+                TextColumn::make('descricao')
+                    ->limit(50)
+                    ->label('Descrição'),
+
+                IconColumn::make('link')
+                    ->label('Acessar') // Nome mais intuitivo
+                    ->icon('heroicon-o-link') // Ícone de link
+                    ->color('primary') // Cor azul para destacar
+                    ->url(fn($record) => $record->link, true), // Torna o ícone clicável e abre em nova aba
+
+                IconColumn::make('tipo')
+                    ->label('Tipo')
+                    ->color(fn(string $state): string => match ($state) {
+                        'ferramenta' => 'info',
+                        'dashboard' => 'success',
+                        default => 'gray',
+                    }),
             ])
+
             ->filters([
                 //
             ])
