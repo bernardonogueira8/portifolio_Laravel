@@ -8,7 +8,9 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
@@ -23,25 +25,77 @@ class CardResource extends Resource
 {
     protected static ?string $model = Card::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $modelLabel = 'Dashboard';
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
+    protected static ?string $navigationIcon = 'heroicon-o-bookmark';
+
+    public static function getNavigationIcon(): string
+    {
+        return 'heroicon-o-bookmark';
+    }
+    public static function getNavigationLabel(): string
+    {
+        return 'Card';
+    }
+    public static function getNavigationGroup(): ?string
+    {
+        return 'Cadastro Básico';
+    }
+
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('nome')->required()->maxLength(35),
-                Textarea::make('descricao')->required()->maxLength(150),
-                FileUpload::make('imagem')->image()->directory('cards')->required(),
-                TextInput::make('link')->url()->required(),
-                Select::make('tipo')
-                    ->options([
-                        'dashboard' => 'Dashboard',
-                        'ferramenta' => 'Ferramenta',
-                    ])
-                    ->required()
-                    ->default('dashboard'),
+                Section::make('Informações do Card')
+                    ->schema([
+                        Grid::make(2)
+                            ->schema([
+                                TextInput::make('nome')
+                                    ->label('Nome')
+                                    ->required()
+                                    ->maxLength(35)
+                                    ->columnSpan(1),
+
+                                Select::make('tipo')
+                                    ->label('Tipo')
+                                    ->options([
+                                        'dashboard' => 'Dashboard',
+                                        'ferramenta' => 'Ferramenta',
+                                    ])
+                                    ->required()
+                                    ->default('dashboard')
+                                    ->columnSpan(1),
+                            ]),
+
+                        Textarea::make('descricao')
+                            ->label('Descrição')
+                            ->required()
+                            ->maxLength(150)
+                            ->columnSpanFull(),
+
+                        TextInput::make('link')
+                            ->label('Link')
+                            ->url()
+                            ->required()
+                            ->columnSpanFull(),
+
+                        FileUpload::make('imagem')
+                            ->label('Imagem do Card')
+                            ->image()
+                            ->directory('cards')
+                            ->required()
+                            ->columnSpanFull(),
+                    ]),
+
             ]);
     }
+
 
     public static function table(Table $table): Table
     {
