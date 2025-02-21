@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Grid;
+use Filament\Tables\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Textarea;
@@ -17,6 +18,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\CardResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -114,24 +116,44 @@ class CardResource extends Resource
                     ->limit(50)
                     ->label('Descrição'),
 
+                IconColumn::make('tipo')
+                    ->label('Tipo')
+                    ->icon(fn(string $state): string => match ($state) {
+                        'ferramenta' => 'heroicon-o-wrench',
+                        'dashboard' => 'heroicon-o-presentation-chart-bar',
+                    })
+                    ->color(fn(string $state): string => match ($state) {
+                        'ferramenta' => 'danger',
+                        'dashboard' => 'success',
+                        default => 'gray',
+                    }),
                 IconColumn::make('link')
                     ->label('Acessar') // Nome mais intuitivo
                     ->icon('heroicon-o-link') // Ícone de link
                     ->color('primary') // Cor azul para destacar
                     ->url(fn($record) => $record->link, true), // Torna o ícone clicável e abre em nova aba
 
-                IconColumn::make('tipo')
-                    ->label('Tipo')
-                    ->color(fn(string $state): string => match ($state) {
-                        'ferramenta' => 'info',
-                        'dashboard' => 'success',
-                        default => 'gray',
-                    }),
             ])
 
             ->filters([
-                //
+                SelectFilter::make('tipo')
+                    ->label('Tipo')
+                    ->options([
+                        'dashboard' => 'Dashboard',
+                        'ferramenta' => 'Ferramenta',
+                    ])
+                    ->default(null)
+                    ->placeholder('Todos'),
             ])
+            ->filtersTriggerAction(
+                fn(Action $action) => $action
+                    ->button()
+                    ->label('Filtrar')
+                    ->icon('heroicon-o-funnel')
+                    ->color('primary')
+            )
+
+
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
