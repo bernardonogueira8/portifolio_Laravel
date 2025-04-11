@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @php
+        $user = \App\Models\User::first(); // ou Auth::user()
+    @endphp
     <div class="relative min-h-screen overflow-hidden font-mono text-white">
         @include('components.navbar')
         {{-- Content --}}
@@ -10,7 +13,7 @@
             <div class="flex justify-center mx-auto md:mx-5">
                 <div class="max-w-md">
                     <p class="mb-2 text-gray-300">// Hi all. I am</p>
-                    <h1 class="mb-2 text-5xl font-bold tracking-wide text-white">Micheal Weaver</h1>
+                    <h1 class="mb-2 text-5xl font-bold tracking-wide text-white">{{ $user->name }}</h1>
                     <p class="text-xl font-medium text-blue-400">&gt; Front-end developer</p>
 
                     <div class="mt-8 space-y-1 text-sm text-gray-400">

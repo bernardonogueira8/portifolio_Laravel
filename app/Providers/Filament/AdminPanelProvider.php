@@ -48,7 +48,12 @@ class AdminPanelProvider extends PanelProvider
                     ->setTitle('Meu Perfil')
                     ->setNavigationLabel('Meu Perfil')
                     ->setNavigationGroup('Configurações')
-                    ->setIcon('heroicon-o-user'),
+                    ->shouldShowDeleteAccountForm(false)
+                    ->shouldShowEditProfileForm(false)
+                    ->customProfileComponents([
+                        \App\Livewire\ProfileComponent::class,
+                        \App\Livewire\SocialMediaComponent::class,
+                    ]),
                 ActivitylogPlugin::make()
                     ->label('Log')
                     ->pluralLabel('Logs')

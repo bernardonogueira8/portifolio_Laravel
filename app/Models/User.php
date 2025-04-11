@@ -25,15 +25,29 @@ class User extends Authenticatable implements FilamentUser
 
     protected $fillable = [
         'name',
+        'username',
+        'subtitle',
         'email',
         'password',
+        'github_link',
+        'resume',
+        'social_media',
     ];
 
     use LogsActivity;
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-            ->logOnly(['name', 'email', 'password']);
+            ->logOnly([
+                'name',
+                'username',
+                'subtitle',
+                'email',
+                'password',
+                'resume',
+                'github_link',
+                'social_media',
+            ]);
     }
 
     /**
@@ -56,6 +70,7 @@ class User extends Authenticatable implements FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'social_media' => 'array',
         ];
     }
 }

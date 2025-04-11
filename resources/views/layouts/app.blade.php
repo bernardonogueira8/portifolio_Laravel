@@ -12,6 +12,7 @@
     @livewireStyles
 </head>
 
+
 <body class="bg-[#0f111a] text-white font-mono relative">
     {{-- Conteúdo dinâmico --}}
     @yield('content')
