@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('username')->nullable();
             $table->string('subtitle')->nullable();
             $table->string('resume')->nullable();
+            $table->longText('bio')->nullable();
         });
     }
 

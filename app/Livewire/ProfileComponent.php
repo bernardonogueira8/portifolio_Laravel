@@ -31,6 +31,7 @@ class ProfileComponent extends Component implements HasForms
                 'username',
                 'subtitle',
                 'resume',
+                'bio'
             ])
         );
     }
@@ -70,6 +71,11 @@ class ProfileComponent extends Component implements HasForms
                             ->label('Resumo')
                             ->placeholder('ex: Gosto de bolo e coca cola')
                             ->maxLength(60)
+                            ->columnSpanFull(),
+                        Forms\Components\Textarea::make('bio')
+                            ->label('Bio')
+                            ->placeholder('ex: Espaço para falar mais sobre mim')
+                            ->autosize()
                             ->columnSpanFull(),
                     ])
                     ->columns(2),

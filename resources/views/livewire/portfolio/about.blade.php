@@ -23,15 +23,9 @@
                         <span x-text="open ? '▼' : '►'" class="text-xs"></span>
                     </button>
                     <ul x-show="open" class="mt-2 ml-4 space-y-1">
-                        <li class="flex items-center gap-1 text-blue-300"><span>📄</span> bio</li>
-                        <li class="flex items-center gap-1 text-green-400"><span>📘</span> interests</li>
-                        <li class="flex items-center gap-1 text-indigo-300">
-                            <span>🎓</span> education
-                            <ul class="mt-1 ml-4 space-y-1 text-indigo-200">
-                                <li class="flex items-center gap-1"><span>🏫</span> high-school</li>
-                                <li class="flex items-center gap-1"><span>🎓</span> university</li>
-                            </ul>
-                        </li>
+                        <li class="flex items-center gap-1 text-green-300"><span>📄</span> bio</li>
+                        <li class="flex items-center gap-1 text-indigo-400"><span>📘</span> interests</li>
+                        <li class="flex items-center gap-1 text-indigo-300"><span>🎓</span> education</li>
                     </ul>
                 </div>
 
@@ -44,16 +38,9 @@
                                 viewBox="0 0 24 24">
                                 <path d="M16 4H8a4 4 0 00-4 4v8a4 4 0 004 4h8a4 4 0 004-4V8a4 4 0 00-4-4zM8 8h8"></path>
                             </svg>
-                            user@gmail.com
+                            {{ $user->email }}
                         </li>
-                        <li class="flex items-center gap-2 text-gray-200">
-                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2"
-                                viewBox="0 0 24 24">
-                                <path
-                                    d="M3 5h2l3.6 7.59a1 1 0 01-.21 1.11l-2.7 2.7a16 16 0 006.59 6.59l2.7-2.7a1 1 0 011.11-.21L19 19v2a1 1 0 01-1 1A17 17 0 013 6a1 1 0 011-1z" />
-                            </svg>
-                            +3598246359
-                        </li>
+
                     </ul>
                 </div>
             </aside>
