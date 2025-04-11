@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="relative min-h-screen overflow-hidden font-mono text-white bg-[#0d1117]">
+    <div class="relative min-h-screen overflow-hidden font-mono text-white bg-[#011627]">
         @include('components.navbar')
         <div x-data="{ tab: 'bio' }" class="flex h-screen text-sm text-gray-300 bg-[#0f111a] font-mono">
             <!-- Sidebar -->
-            <aside class="w-full md:w-64 bg-[#0d1117] text-white border-r border-gray-700 p-4 flex flex-col gap-4 text-sm">
+            <aside class="w-full md:w-64 bg-[#011627] text-white border-r border-gray-700 p-4 flex flex-col gap-4 text-sm">
 
                 <!-- Personal Info -->
                 <div x-data="{ open: true }">
