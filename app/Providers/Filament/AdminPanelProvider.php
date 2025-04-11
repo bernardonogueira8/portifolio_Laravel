@@ -46,6 +46,7 @@ class AdminPanelProvider extends PanelProvider
                 FilamentEditProfilePlugin::make()
                     ->slug('my-profile')
                     ->setTitle('Meu Perfil')
+                    ->setIcon('heroicon-o-user')
                     ->setNavigationLabel('Meu Perfil')
                     ->setNavigationGroup('Configurações')
                     ->shouldShowDeleteAccountForm(false)
