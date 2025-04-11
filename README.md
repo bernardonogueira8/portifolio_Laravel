@@ -47,7 +47,7 @@ Este projeto está configurado para deploy no Coolify, uma plataforma que facili
 1. Clone o repositório:
 
     ```bash
-    git clone https://github.com/Samuraiflamesf/Laravel-Filament_3-Coolify.git
+    git clone https://github.com/bernardonogueira8/portifolio_Laravel.git
     ```
 
 2. Entre no diretório do projeto:
