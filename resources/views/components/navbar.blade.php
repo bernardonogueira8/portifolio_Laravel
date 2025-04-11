@@ -1,8 +1,11 @@
+@php
+    $user = \App\Models\User::first();
+@endphp
 <nav class="px-8 py-4 text-sm border-b border-gray-700 bg-[#0f111a]">
     <div class="flex items-center justify-between">
         <!-- Logo ou nome -->
         <div class="text-gray-400 hover:text-white">
-            <a href="{{ route('portfolio.home') }}">micheal-weaver</a>
+            <a href="{{ route('portfolio.home') }}">{{ $user->username }}</a>
         </div>
 
         <!-- Links do menu -->

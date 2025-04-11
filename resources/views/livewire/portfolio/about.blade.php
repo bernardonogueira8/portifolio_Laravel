@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@php
+    $user = \App\Models\User::first();
+@endphp
 @section('content')
     <div class="relative min-h-screen overflow-hidden font-mono text-white bg-[#011627]">
         @include('components.navbar')

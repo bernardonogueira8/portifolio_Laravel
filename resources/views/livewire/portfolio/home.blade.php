@@ -1,9 +1,8 @@
 @extends('layouts.app')
-
+@php
+    $user = \App\Models\User::first();
+@endphp
 @section('content')
-    @php
-        $user = \App\Models\User::first(); // ou Auth::user()
-    @endphp
     <div class="relative min-h-screen overflow-hidden font-mono text-white">
         @include('components.navbar')
         {{-- Content --}}
