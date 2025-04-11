@@ -3,10 +3,10 @@
     $user = \App\Models\User::first();
 @endphp
 @section('content')
-    <div class="relative min-h-screen overflow-hidden font-mono text-white">
+    <div class="flex flex-col min-h-screen font-mono text-white">
         @include('components.navbar')
         {{-- Content --}}
-        <div class="min-h-[80vh] flex flex-col lg:flex-row items-center justify-center  text-white">
+        <main class="flex flex-col items-center justify-center flex-grow text-white lg:flex-row">
 
             {{-- Bloco da esquerda (apresentação) --}}
             <div class="flex justify-center mx-auto md:mx-5">
@@ -31,9 +31,9 @@
                 {{-- Lado direito: jogo importado como componente --}}
                 @include('components.game')
             </div>
-
-        </div>
-        @include('components.footer')
+        </main>
         @include('components.background')
+
+        @include('components.footer')
     </div>
 @endsection

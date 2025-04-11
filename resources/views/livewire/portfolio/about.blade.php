@@ -3,11 +3,11 @@
     $user = \App\Models\User::first();
 @endphp
 @section('content')
-    <div class="relative min-h-screen overflow-hidden font-mono text-white bg-[#011627]">
+    <div class="relative min-h-screen overflow-y-auto font-mono text-white bg-[#011627]">
         @include('components.navbar')
-        <div x-data="{ tab: 'bio' }" class="flex h-screen text-sm text-gray-300 bg-[#0f111a] font-mono">
+        <div x-data="{ tab: 'bio' }" class="flex h-full overflow-hidden text-sm text-gray-300 bg-[#0f111a] font-mono">
             <!-- Sidebar -->
-            <aside class="w-full md:w-64 bg-[#011627] text-white border-r border-gray-700 p-4 flex flex-col gap-4 text-sm">
+            <aside class="w-full md:w-64 bg-[#0f111a] text-white border-r border-gray-700 p-4 flex flex-col gap-4 text-sm">
 
                 <!-- Personal Info -->
                 <div x-data="{ open: true }">
@@ -47,7 +47,7 @@
 
 
             <!-- Main Content -->
-            <main class="flex flex-col flex-1">
+            <main class="flex flex-col flex-1 overflow-hidden">
                 <!-- Tabs -->
                 <div class="flex items-center border-b border-gray-800 text-gray-400 bg-[#161925] px-4 py-2">
                     <div class="flex items-center space-x-2">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-1 overflow-y-auto">
+                <div class="flex flex-1 min-h-0 overflow-y-auto">
                     <!-- Editor Section -->
                     <section class="w-1/2 p-6 border-r border-gray-800">
                         <pre class="text-sm leading-snug text-gray-300 whitespace-pre-wrap">

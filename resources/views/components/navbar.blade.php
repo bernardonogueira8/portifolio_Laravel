@@ -1,51 +1,50 @@
 @php
     $user = \App\Models\User::first();
 @endphp
-<nav class="px-8 py-4 text-sm border-b border-gray-700 bg-[#0f111a]">
+
+<nav x-data="{ open: false }" class="px-8 py-4 text-sm border-b border-gray-700 bg-[#0f111a]">
     <div class="flex items-center justify-between">
         <!-- Logo ou nome -->
         <div class="text-gray-400 hover:text-white">
             <a href="{{ route('portfolio.home') }}">{{ $user->username }}</a>
         </div>
 
-        <!-- Links do menu -->
-        <div id="menu" class="hidden space-x-4 lg:flex">
-            <a href="{{ route('portfolio.home') }}"
-                class="{{ Route::is('portfolio.home') ? 'text-orange-400 border-b-2 border-orange-400 pb-1' : 'text-gray-400 hover:text-white' }}">
-                _hello-word
-            </a>
-            <a href="{{ route('portfolio.projects') }}"
-                class="{{ Route::is('portfolio.projects') ? 'text-orange-400 border-b-2 border-orange-400 pb-1' : 'text-gray-400 hover:text-white' }}">
-                _projetos
-            </a>
-            <a href="{{ route('portfolio.about') }}"
-                class="{{ Route::is('portfolio.about') ? 'text-orange-400 border-b-2 border-orange-400 pb-1' : 'text-gray-400 hover:text-white' }}">
-                _sobre-mim
-            </a>
-            <a href="{{ route('portfolio.contact') }}"
-                class="{{ Route::is('portfolio.contact') ? 'text-orange-400 border-b-2 border-orange-400 pb-1' : 'text-gray-400 hover:text-white' }}">
-                _fale-comigo
-            </a>
-        </div>
+        <!-- Botão do menu mobile -->
+        <button @click="open = !open" class="text-gray-400 hover:text-white lg:hidden focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                <path x-show="open" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
 
-        <!-- Menu mobile -->
-        <div id="menu-mobile" class="hidden mt-4 space-y-2 text-sm lg:hidden">
-            <a href="{{ route('portfolio.home') }}"
-                class="block {{ Route::is('portfolio.home') ? 'text-orange-400' : 'text-gray-400 hover:text-white' }}">
-                _hello-word
-            </a>
-            <a href="{{ route('portfolio.projects') }}"
-                class="block {{ Route::is('portfolio.projects') ? 'text-orange-400' : 'text-gray-400 hover:text-white' }}">
-                _projetos
-            </a>
-            <a href="{{ route('portfolio.about') }}"
-                class="block {{ Route::is('portfolio.about') ? 'text-orange-400' : 'text-gray-400 hover:text-white' }}">
-                _sobre-mim
-            </a>
-            <a href="{{ route('portfolio.contact') }}"
-                class="block {{ Route::is('portfolio.contact') ? 'text-orange-400' : 'text-gray-400 hover:text-white' }}">
-                _fale-comigo
-            </a>
+        <!-- Menu Desktop -->
+        <div class="hidden space-x-4 lg:flex">
+            @foreach ([
+        'portfolio.home' => '_hello-word',
+        'portfolio.projects' => '_projetos',
+        'portfolio.about' => '_sobre-mim',
+        'portfolio.contact' => '_fale-comigo',
+    ] as $route => $label)
+                <a href="{{ route($route) }}"
+                    class="{{ Route::is($route) ? 'text-orange-400 border-b-2 border-orange-400 pb-1' : 'text-gray-400 hover:text-white' }}">
+                    {{ $label }}
+                </a>
+            @endforeach
         </div>
+    </div>
 
+    <!-- Menu Mobile -->
+    <div x-show="open" class="mt-4 space-y-2 lg:hidden">
+        @foreach ([
+        'portfolio.home' => '_hello-word',
+        'portfolio.projects' => '_projetos',
+        'portfolio.about' => '_sobre-mim',
+        'portfolio.contact' => '_fale-comigo',
+    ] as $route => $label)
+            <a href="{{ route($route) }}"
+                class="block {{ Route::is($route) ? 'text-orange-400' : 'text-gray-400 hover:text-white' }}">
+                {{ $label }}
+            </a>
+        @endforeach
+    </div>
 </nav>
