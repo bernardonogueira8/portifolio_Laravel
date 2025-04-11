@@ -53,7 +53,7 @@ Este projeto está configurado para deploy no Coolify, uma plataforma que facili
 2. Entre no diretório do projeto:
 
     ```bash
-    cd seu-projeto
+    cd portifolio_Laravel
     ```
 
 3. Instale as dependências do PHP:
