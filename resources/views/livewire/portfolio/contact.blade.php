@@ -3,11 +3,12 @@
     $user = \App\Models\User::first();
 @endphp
 @section('content')
-    <div class="relative min-h-screen overflow-hidden font-mono text-white bg-[#011627]">
+    <div class="relative h-screen overflow-hidden font-mono text-white bg-[#0f111a]">
+
         @include('components.navbar')
-        <div x-data="{ tab: 'bio' }" class="flex min-h-[80vh] text-sm text-gray-300 bg-[#0f111a] font-mono">
+        <div x-data="{ tab: 'bio' }" class="flex h-full text-sm text-gray-300 bg-[#0f111a] font-mono">
             <!-- Sidebar -->
-            <aside class="w-full md:w-64 bg-[#011627] text-white border-r border-gray-700 p-4 flex flex-col gap-4 text-sm">
+            <aside class="w-full md:w-64 bg-[#0f111a] text-white border-r border-gray-700 p-4 flex flex-col gap-4 text-sm">
 
                 <!-- Contacts -->
                 <div>
@@ -45,7 +46,7 @@
                             @if (!empty($link))
                                 <li>
                                     <a href="{{ $link }}" target="_blank" rel="noopener"
-                                        class="flex items-center gap-1 text-green-300 hover:underline">
+                                        class="flex items-center gap-1 text-white hover:underline">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -66,9 +67,6 @@
 
 
         </div>
-    </div>
-
-
-    @include('components.footer')
+        @include('components.footer')
     </div>
 @endsection('content')

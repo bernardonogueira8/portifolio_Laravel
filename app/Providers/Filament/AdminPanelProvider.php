@@ -41,8 +41,6 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->favicon(asset('favicon.ico'))
             ->plugins([
-                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
-                FilamentApexChartsPlugin::make(),
                 FilamentEditProfilePlugin::make()
                     ->slug('my-profile')
                     ->setTitle('Meu Perfil')

@@ -2,8 +2,8 @@
     $user = \App\Models\User::first();
 @endphp
 <footer
-    class="absolute bottom-0 flex items-center justify-between w-full px-8 py-4 text-sm text-gray-400 border-t border-gray-700 bg-[#0f111a]">
-    <div class="flex items-center space-x-2">
+    class="absolute bottom-0 flex items-center justify-between w-full px-8 py-4 text-sm text-gray-400 border-t border-gray-700 bg-[#0f111a] flex-auto">
+    <div class="flex items-center flex-auto space-x-2">
         <span>Encontre-me em:</span>
 
         @php
@@ -47,7 +47,7 @@
     </div>
 
     <div>
-        <a href="{{ $user->social_media_media['github'] ?? '' }}" class="flex items-center space-x-1">
+        <a href="{{ $user->social_media['github'] ?? '' }}" class="flex items-center space-x-1">
             <span>{{ $user->username }}</span>
             <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
                 <path d="..." />

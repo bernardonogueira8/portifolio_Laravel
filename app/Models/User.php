@@ -4,7 +4,6 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Spatie\Activitylog\LogOptions;
-use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -16,7 +15,7 @@ use Filament\Panel;
 
 class User extends Authenticatable implements FilamentUser
 {
-    use HasFactory, Notifiable, HasRoles, SoftDeletes;
+    use HasFactory, Notifiable, SoftDeletes;
 
     public function canAccessPanel(Panel $panel): bool
     {
@@ -32,6 +31,7 @@ class User extends Authenticatable implements FilamentUser
         'github_link',
         'resume',
         'social_media',
+        'bio'
     ];
 
     use LogsActivity;
@@ -47,6 +47,7 @@ class User extends Authenticatable implements FilamentUser
                 'resume',
                 'github_link',
                 'social_media',
+                'bio'
             ]);
     }
 
