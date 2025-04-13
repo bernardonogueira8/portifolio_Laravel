@@ -2,12 +2,17 @@
 
 namespace App\Livewire\Portfolio;
 
+use App\Models\Lang;
 use Livewire\Component;
 
 class Projects extends Component
 {
     public function render()
     {
-        return view('livewire.portfolio.projects')->layout('layouts.app');
+        $langs = Lang::all();
+
+        return view('livewire.portfolio.projects', [
+            'langs' => $langs,
+        ])->layout('layouts.app');
     }
 }

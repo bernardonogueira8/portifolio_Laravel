@@ -34,26 +34,23 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->navigationGroups([
-                'Cadastro Básico',
-                'Administração',
-                'Configurações',
-            ])
             ->favicon(asset('favicon.ico'))
             ->plugins([
-                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
-                FilamentApexChartsPlugin::make(),
                 FilamentEditProfilePlugin::make()
                     ->slug('my-profile')
                     ->setTitle('Meu Perfil')
+                    ->setIcon('heroicon-o-user')
                     ->setNavigationLabel('Meu Perfil')
-                    ->setNavigationGroup('Configurações')
-                    ->setIcon('heroicon-o-user'),
+                    ->shouldShowDeleteAccountForm(false)
+                    ->shouldShowEditProfileForm(false)
+                    ->customProfileComponents([
+                        \App\Livewire\ProfileComponent::class,
+                        \App\Livewire\SocialMediaComponent::class,
+                    ]),
                 ActivitylogPlugin::make()
                     ->label('Log')
                     ->pluralLabel('Logs')
                     ->navigationItem(true)
-                    ->navigationGroup('Configurações')
                     ->navigationIcon('heroicon-o-shield-exclamation')
                     ->navigationCountBadge(true)
                     ->navigationSort(2),
