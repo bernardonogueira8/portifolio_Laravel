@@ -34,11 +34,6 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->navigationGroups([
-                'Cadastro Básico',
-                'Administração',
-                'Configurações',
-            ])
             ->favicon(asset('favicon.ico'))
             ->plugins([
                 FilamentEditProfilePlugin::make()
@@ -46,7 +41,6 @@ class AdminPanelProvider extends PanelProvider
                     ->setTitle('Meu Perfil')
                     ->setIcon('heroicon-o-user')
                     ->setNavigationLabel('Meu Perfil')
-                    ->setNavigationGroup('Configurações')
                     ->shouldShowDeleteAccountForm(false)
                     ->shouldShowEditProfileForm(false)
                     ->customProfileComponents([
@@ -57,7 +51,6 @@ class AdminPanelProvider extends PanelProvider
                     ->label('Log')
                     ->pluralLabel('Logs')
                     ->navigationItem(true)
-                    ->navigationGroup('Configurações')
                     ->navigationIcon('heroicon-o-shield-exclamation')
                     ->navigationCountBadge(true)
                     ->navigationSort(2),

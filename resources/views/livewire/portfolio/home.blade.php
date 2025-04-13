@@ -21,7 +21,8 @@
                         <p class="text-center lg:text-start">
                             <span class="text-green-400">const</span>
                             <span class="text-blue-300">githubLink</span> =
-                            <span class="text-orange-400">"{{ $user->social_media['github'] ?? '' }}"</span>
+                            <a class="text-orange-400" target="_blank"
+                                href="{{ $user->social_media['github'] ?? '' }}">"{{ $user->social_media['github'] ?? '' }}"</a>
                         </p>
                     </div>
                 </div>

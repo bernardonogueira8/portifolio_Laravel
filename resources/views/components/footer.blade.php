@@ -44,6 +44,18 @@
                 <i class="fab fa-youtube"></i>
             </a>
         @endif
+        @if (!empty($social_media['medium']))
+            <a href="{{ $social_media['medium'] }}" target="_blank"
+                class="p-1 text-white bg-gray-800 rounded hover:bg-gray-700">
+                <i class="fa-brands fa-medium"></i>
+            </a>
+        @endif
+        @if (!empty($social_media['moodle']))
+            <a href="{{ $social_media['moodle'] }}" target="_blank"
+                class="p-1 text-white bg-gray-800 rounded hover:bg-gray-700">
+                <i class="fa-solid fa-link"></i>
+            </a>
+        @endif
     </div>
 
     <div>
