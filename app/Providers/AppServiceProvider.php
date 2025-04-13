@@ -3,10 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Policies\ActivityPolicy;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\URL;
-use Spatie\Activitylog\Models\Activity;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,7 +25,6 @@ class AppServiceProvider extends ServiceProvider
             URL::forceRootUrl(config('app.url'));
         }
 
-        Gate::policy(Activity::class, ActivityPolicy::class);
-
+        /* Gate::policy(Activity::class, ActivityPolicy::class); */
     }
 }
