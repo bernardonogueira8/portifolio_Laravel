@@ -19,6 +19,9 @@ class CreateContact extends Component implements HasForms
 
     public ?array $data = [];
     public bool $sent = false;
+    public string $name = '';
+    public string $email = '';
+    public string $message = '';
 
     public function mount(): void
     {
@@ -31,17 +34,23 @@ class CreateContact extends Component implements HasForms
             ->schema([
                 TextInput::make('name')
                     ->label('_nome')
-                    ->columnSpanFull()
-                    ->required(),
+                    ->required()
+                    ->live()
+                    ->lazy()
+                    ->afterStateUpdated(fn($state) => $this->name = $state),
                 TextInput::make('email')
                     ->label('_email')
                     ->email()
-                    ->columnSpanFull()
-                    ->required(),
+                    ->required()
+                    ->live()
+                    ->lazy()
+                    ->afterStateUpdated(fn($state) => $this->email = $state),
                 Textarea::make('message')
                     ->label('_mensagem')
-                    ->columnSpanFull()
-                    ->required(),
+                    ->required()
+                    ->live()
+                    ->lazy()
+                    ->afterStateUpdated(fn($state) => $this->message = $state),
             ])
             ->statePath('data')
             ->model(Contact::class);
@@ -50,12 +59,15 @@ class CreateContact extends Component implements HasForms
     public function create(): void
     {
         $data = $this->form->getState();
+
         $record = Contact::create($data);
         $this->form->model($record)->saveRelationships();
 
-        $this->sent = true; // exibe mensagem de agradecimento
-        $this->dispatch('message-sent'); // Livewire v3
-        $this->form->fill([]);
+        $this->sent = true;
+        $this->dispatch('message-sent');
+
+        // Importante: manter os dados visíveis para o template JS
+        $this->data = $data;
     }
 
     public function render(): View

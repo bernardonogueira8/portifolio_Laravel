@@ -62,19 +62,9 @@
                 </div>
 
             </aside>
-            <div class="flex flex-1 min-h-0 overflow-y-auto">
-                <!-- Editor Section -->
-                <section class="w-1/2 p-6 border-r border-gray-800">
 
-                    @livewire('contacts.create-contact')
+            @livewire('contacts.create-contact')
 
-                </section>
-                <section class="w-1/2 p-6 border-r border-gray-800">
-                    <pre class="text-sm leading-snug text-gray-300 whitespace-pre-wrap">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, harum tempora. Voluptatem, odit doloremque delectus libero sint sequi, possimus est temporibus aut aliquam nemo ipsam. Cumque iure omnis quos. Excepturi.
-                    </pre>
-                </section>
-            </div>
         </div>
         @include('components.footer')
     </div>

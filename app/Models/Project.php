@@ -13,6 +13,10 @@ class Project extends Model
     {
         return $this->belongsTo(Lang::class, 'type', 'name');
     }
+    public function languages()
+    {
+        return $this->belongsToMany(Lang::class, 'lang_project', 'project_id', 'lang_id');
+    }
 
 
     protected static function boot()

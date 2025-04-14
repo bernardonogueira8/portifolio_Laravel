@@ -61,7 +61,7 @@
     <div>
         <a href="{{ $user->social_media['github'] ?? '' }}" class="flex items-center space-x-1">
             <span>{{ $user->username }}</span>
-            <i class="fab fa-github"></i>
+              <i class="fab fa-github"></i>
         </a>
     </div>
 
