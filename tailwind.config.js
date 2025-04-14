@@ -12,7 +12,9 @@ export default {
     theme: {
         extend: {
             fontFamily: {
+                mono: ['"Fira Code"', "monospace"],
                 sans: [
+                    "Fira Code",
                     "Figtree",
                     ...defaultTheme.fontFamily.sans,
                     "Inter",

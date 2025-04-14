@@ -61,9 +61,7 @@
     <div>
         <a href="{{ $user->social_media['github'] ?? '' }}" class="flex items-center space-x-1">
             <span>{{ $user->username }}</span>
-            <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="..." />
-            </svg>
+            <i class="fab fa-github"></i>
         </a>
     </div>
 
