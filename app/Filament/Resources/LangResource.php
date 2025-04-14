@@ -17,13 +17,18 @@ class LangResource extends Resource
 {
     protected static ?string $model = Lang::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-ellipsis-horizontal-circle';
 
     protected static ?string $modelLabel = 'Tipo de Projeto';
 
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     public static function getNavigationIcon(): string
     {
-        return 'heroicon-o-cube';
+        return 'heroicon-o-ellipsis-horizontal-circle';
     }
     public static function getNavigationLabel(): string
     {

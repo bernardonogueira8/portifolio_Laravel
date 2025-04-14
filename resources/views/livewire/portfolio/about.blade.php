@@ -29,7 +29,7 @@
                     </ul>
                 </div>
 
-                <!-- Contacts -->
+                <!-- contacts -->
                 <div>
                     <p class="mb-2 font-semibold text-gray-400 ">contato</p>
                     <ul class="ml-2 space-y-1">

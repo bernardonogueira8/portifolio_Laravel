@@ -10,7 +10,7 @@
             <!-- Sidebar -->
             <aside class="w-full md:w-64 bg-[#0f111a] text-white border-r border-gray-700 p-4 flex flex-col gap-4 text-sm">
 
-                <!-- Contacts -->
+                <!-- contacts -->
                 <div>
                     <p class="mb-2 font-semibold text-gray-400">Contato</p>
                     <ul class="mx-2">
@@ -65,54 +65,9 @@
             <div class="flex flex-1 min-h-0 overflow-y-auto">
                 <!-- Editor Section -->
                 <section class="w-1/2 p-6 border-r border-gray-800">
-                    <div class="flex flex-col items-center leading-snug text-center text-gray-300 justify-centertext-sm ">
-                        {{-- <h2 class="text-3xl font-bold">Obrigado! 🤘</h2>
-                        <p class="text-gray-400">Sua mensagem foi aceita. Você receberá uma resposta em breve!</p>
-                        <button wire:click="$set('sent', false)"
-                            class="px-4 py-2 mt-4 bg-gray-700 rounded-xl">envie-nova-mensagem</button> --}}
 
-                        <form wire:submit="save">
-                            <input type="text" wire:model="name">
+                    @livewire('contacts.create-contact')
 
-                            <input type="text" wire:model="message">
-
-                            <button type="submit">Save</button>
-                        </form>
-
-
-
-                        {{-- <div>
-                            <form wire:submit.prevent="send" class="w-full max-w-md space-y-4">
-                                <div>
-                                    <label class="block text-sm">_name:</label>
-                                    <input wire:model="name" type="text"
-                                        class="w-full p-2 bg-gray-900 border border-gray-700 rounded">
-                                    @error('name')
-                                        <span class="text-sm text-red-400">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div>
-                                    <label class="block text-sm">_email:</label>
-                                    <input wire:model="email" type="email"
-                                        class="w-full p-2 bg-gray-900 border border-gray-700 rounded">
-                                    @error('email')
-                                        <span class="text-sm text-red-400">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div>
-                                    <label class="block text-sm">_message:</label>
-                                    <textarea wire:model="message" class="w-full p-2 bg-gray-900 border border-gray-700 rounded" rows="4"></textarea>
-                                    @error('message')
-                                        <span class="text-sm text-red-400">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <button type="submit"
-                                    class="px-4 py-2 bg-gray-800 rounded hover:bg-gray-700">submit-message</button>
-                            </form>
-                        </div> --}}
-
-
-                    </div>
                 </section>
                 <section class="w-1/2 p-6 border-r border-gray-800">
                     <pre class="text-sm leading-snug text-gray-300 whitespace-pre-wrap">

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('sub_name')->nullable();
             $table->string('type');
-            $table->string('city');
+            $table->string('city')->nullable();;
             $table->string('country')->nullable();
             $table->date('date_start');
             $table->date('date_end')->nullable();

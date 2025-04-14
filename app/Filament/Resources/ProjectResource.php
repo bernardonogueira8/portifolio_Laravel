@@ -31,11 +31,11 @@ class ProjectResource extends Resource
         return static::getModel()::count();
     }
 
-    protected static ?string $navigationIcon = 'heroicon-o-cube';
+    protected static ?string $navigationIcon = 'heroicon-o-bookmark-square';
 
     public static function getNavigationIcon(): string
     {
-        return 'heroicon-o-cube';
+        return 'heroicon-o-bookmark-square';
     }
     public static function getNavigationLabel(): string
     {

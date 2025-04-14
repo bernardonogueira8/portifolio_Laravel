@@ -41,21 +41,27 @@ class SocialMediaComponent extends Component implements HasForms
                     ->aside()
                     ->schema([
                         TextInput::make('social_media.github')
+                            ->url()
                             ->label('GitHub')
                             ->placeholder('https://github.com/seuusuario'),
                         TextInput::make('social_media.linkedin')
+                            ->url()
                             ->label('LinkedIn')
                             ->placeholder('https://linkedin.com/in/seuusuario'),
                         TextInput::make('social_media.youtube')
+                            ->url()
                             ->label('YouTube')
                             ->placeholder('https://youtube.com/@seuusuario'),
                         TextInput::make('social_media.instagram')
+                            ->url()
                             ->label('Instagram')
                             ->placeholder('https://instagram.com/seuusuario'),
                         TextInput::make('social_media.medium')
+                            ->url()
                             ->label('Medium')
                             ->placeholder('https://medium.com/@seuusuario'),
                         TextInput::make('social_media.moodle')
+                            ->url()
                             ->label('Moodle')
                             ->placeholder('https://moodle.com/seuusuario'),
                     ]),
